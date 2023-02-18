@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signInWithRedirect } from "firebase/auth";
 
 const Navbar = ({ auth, provider }) => {
   const navigate = useNavigate();
 
   async function LogIn() {
-    const credRes = await signInWithPopup(auth, provider);
+    const credRes = await signInWithRedirect(auth, provider);
     console.log(credRes);
     localStorage.setItem("user", credRes);
     navigate("/feed");

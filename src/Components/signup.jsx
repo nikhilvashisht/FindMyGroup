@@ -1,14 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = ({ auth, provider }) => {
-
   const navigate = useNavigate();
 
   async function SignUp() {
-    const credRes = await signInWithPopup(auth, provider);
+    const credRes = await signInWithRedirect(auth, provider);
     const stringCreds = JSON.stringify(credRes.user);
     localStorage.setItem("user", stringCreds);
     navigate("/feed");
