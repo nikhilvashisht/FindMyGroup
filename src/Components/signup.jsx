@@ -7,7 +7,7 @@ const SignUp = ({ auth, provider }) => {
   const navigate = useNavigate();
 
   async function SignUp() {
-    const credRes = await signInWithRedirect(auth, provider);
+    const credRes = await signInWithPopup(auth, provider);
     const stringCreds = JSON.stringify(credRes.user);
     localStorage.setItem("user", stringCreds);
     navigate("/feed");
